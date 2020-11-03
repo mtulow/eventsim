@@ -76,6 +76,7 @@ object Main extends App {
     val useAvro = toggle("useAvro", default = Some(false),
       descrYes = "output data as Avro", descrNo = "output data as JSON")
 
+    verify()
   }
 
   val startTime = if (ConfFromOptions.startTimeArg.isSupplied) {
