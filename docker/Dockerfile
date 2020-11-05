@@ -7,6 +7,8 @@ RUN set -ex; \
 
 WORKDIR /opt/eventsim
 
-COPY docker/eventsim.sh /opt/eventsim
-COPY target/scala-2.12/eventsim-assembly-2.0.jar /opt/eventsim
+COPY docker/eventsim.sh /opt/eventsim/eventsim.sh
+COPY examples /opt/eventsim/examples
+COPY data /opt/eventsim/data
+COPY target/scala-2.12/eventsim-assembly-2.0.jar /opt/eventsim/eventsim-assembly-2.0.jar
 ENTRYPOINT ["eventsim.sh"]

@@ -22,12 +22,16 @@ libraryDependencies += "org.apache.kafka" % "kafka-clients" % "2.6.0"
 
 libraryDependencies += "org.scala-lang.modules" % "scala-parser-combinators_2.12" % "1.1.2"
 
+libraryDependencies += "com.sun.xml.bind" % "jaxb-impl" % "2.3.3"
+
+
 // libraryDependencies += "io.confluent" % "kafka-avro-serializer" % "2.0.0"
 
 // seq( sbtavro.SbtAvro.avroSettings : _*)
 
 mergeStrategy in assembly ~= ( (old) => {
     case PathList("module-info.class" ) => MergeStrategy.discard
+    case PathList("javax", "xml", "bind", ps @ _*) => MergeStrategy.first
     case x => old(x)
   }
 )
