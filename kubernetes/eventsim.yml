@@ -24,6 +24,7 @@ metadata:
   name: eventsim
   namespace: test-kafka
 spec:
+  parallelism: 2
   template:
     spec:
       initContainers:
