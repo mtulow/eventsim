@@ -35,7 +35,7 @@ jobs:
         # Name of the build platform to cache dependencies. It can be "maven", "gradle" or "sbt".
         cache: 'sbt'  # optional
         # The path to a dependency file: pom.xml, build.gradle, build.sbt, etc. This option can be used with the `cache` option. If this option is omitted, the action searches for the dependency file in the entire repository. This option supports wildcards and a list of file names for caching multiple dependencies.
-        cache-dependency-path: ../../build.sbt # optional
+        cache-dependency-path: build.sbt # optional
     - name: Run tests
       run: sbt test
       # Optional: This step uploads information to the GitHub dependency graph and unblocking Dependabot alerts for the repository
