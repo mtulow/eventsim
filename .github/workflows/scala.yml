@@ -36,10 +36,14 @@ jobs:
         cache: 'sbt'  # optional
         # The path to a dependency file: pom.xml, build.gradle, build.sbt, etc. This option can be used with the `cache` option. If this option is omitted, the action searches for the dependency file in the entire repository. This option supports wildcards and a list of file names for caching multiple dependencies.
         cache-dependency-path: build.sbt # optional
-    - name: Run tests
-      run: sbt test
     - name: Build executable
       run: sbt assembly
+    - name: Make executable
+      run: chmod +x bin/eventsim
+    - name: Create dataset
+      run: bin/eventsim -c "examples/site.json" --from 365 --nusers 30000 --growth-rate 0.30 data/fake.json
       # Optional: This step uploads information to the GitHub dependency graph and unblocking Dependabot alerts for the repository
+    - name: Run tests
+      run: sbt test
     - name: Upload dependency graph
       uses: scalacenter/sbt-dependency-submission@ab086b50c947c9774b70f39fc7f6e20ca2706c91
